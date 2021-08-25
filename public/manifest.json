@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "I don't have time for Bamboo",
+  "description": "Extensions to help filling Bamboo Timesheet",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.bamboohr.com/employees/timesheet*"],
+      "js": ["js/vendor.js", "js/content_script.js"]
+    }
+  ],
+
+  "background": {
+    "scripts": ["js/vendor.js", "js/background.js"]
+  },
+
+  "permissions": ["storage", "webRequest", "*://*.bamboohr.com/*"]
+}
