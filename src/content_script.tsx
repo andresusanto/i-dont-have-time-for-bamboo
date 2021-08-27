@@ -49,13 +49,26 @@ window.addEventListener("load", function () {
     return;
   }
   const payload = JSON.parse(data.textContent as string);
-  const entries = document.getElementsByClassName(
+
+  // Remove all timesheet item elements that are before "Pay Period Begins", otherwise buttons have wrong dates as the payload data doesn't include previous pay period elements
+  let entriesFormContainer = document.getElementsByClassName("TimesheetEntries").item(0)!.firstElementChild as Element;
+  if (entriesFormContainer.children.length === 0) {
+    console.error('no timesheet entry elements were found, Bamboo devs screwed us?');
+    return;
+  }
+
+  let entries = Array.from(document.getElementsByClassName(
     "TimesheetSlat__multipleContent"
-  );
+  ));
+  const payPeriodBeginsIndex = Array.from(entriesFormContainer.children).findIndex(x => x.getAttribute("data-text") === "Pay Period Begins");
+  if (payPeriodBeginsIndex > -1) {
+    entries = entries.slice(payPeriodBeginsIndex);
+  }
+
   const dailyDetails = Object.keys(payload.timesheet.dailyDetails);
 
   for (let i = 0; i < dailyDetails.length; i++) {
-    const item = entries.item(i);
+    const item = entries[i];
     if (!item) continue;
 
     const elm = document.createElement("button");
