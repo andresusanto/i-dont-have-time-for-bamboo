@@ -1,0 +1,60 @@
+name: chefs_kissss
+on: [push]
+jobs:
+  chefs_kissss:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo '
+          MMMMMMMMMMMMMMMMMMMMMMMMMNdmso:........../ooohmdmmddmdmmmmmmmmNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+          MMMMMMMMMMMMMMMMMMmyyhs//:...````````````````................-://oyyMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+          MMMMMMMMdmsos:----....````````````                ````````````......-:osmdNMMMMMMMMMMMMMMMMMMMMMMMMM
+          MMMMmho/--...```````````````````````                ```````...```````...-:/ohmMMMMMMMMMMMMMMMMMMMMMM
+          MMNs:-...`````       ````........`````             ````.........`````````..--:syNMMMMMMMMMMMMMMMMMMM
+          Ns:-...``````        ```..........`````           ````...........``````````..--:/+dNMMMMMMMMMMMMMMMM
+          o--..`````````      ```............````         ````...-:--.......```   `````..--::odMMMMMMMMMMMMMMM
+          --...``````````````````.......----..```````````````...://:-.......````````````..--:::+NMMMMMMMMMMMMM
+          --...........`````````........-:/:-.``````````````...-/+/-........```````````...---:::oNMMMMMMMMMMMM
+          s-......-----..................://-.................-://:--.......```````....-------:::sNMMMMMMMMMMM
+          Nh/-...--:::/::--.....---------:/+/:----::::::::::-::/+/:-----...........--:::/:::---:::hMMMMMMMMMMM
+          MMMh:------:://::-----:::://////////::::::::::::::::////////:::----------:////::::----:::NMMMMMMMMMM
+          MMMMNyo------::///////////:::----.......`````````````....---:://///:::::///::::---::---/mMMMMMMMMMMM
+          MMMMMMMNo/---::////::-----........``````````````````````````....--:://///:::::--:/+hyhMMMMMMMMMMMMMM
+          MMMMMMMMMMmh/:/::-------.......```````````            ````````.....---:://:-/oddNMMMMMMMMMMMMMMMMMMM
+          MMMMMMMMMMMMs:---------.......````````                  ```````.....----::/hNMMMMNhhsssyhmMMMMMMMMMM
+          MMMMMMMMMMMMs:--------......````````                     ``````......----:sMMMMNhyyyyyyyyymMMMMMMMMM
+          MMMMMMMMMMMd:--------.......`````````````......`````````````````.....------MMMMhyyyyyyyyyysyyhhymNMM
+          MMMMMMMMMMMd:------------------..........................---..........----:NMMN+yyyyyyyyyyyyyyyyhyhN
+          MMMMMMMMMMMd:----:::::---...````````````````````````````````..---::::-----:+MMMyyyyyyyyyyyyyyyyyyhsm
+          MMMMMMMMMMMd::/+//:--...```````````````````````````````````````...--:////:-/MMMmshyyyyyyyyyyyyyyyhyN
+          MMMMMMMMMMMm+o+/::-.....```````````````````````````````````````.....--:/+o:dMMMNhhhyyyyyyyyyyyyhhhyN
+          MMMMMMMMMMNo++/::--......``````````````````````````````````.:+syyys+:--:/+++MMMMmyhhhhhhhhhhhhhhhydM
+          MMMMMMMMMM+++/::--...........```````.......``````````````..odhysosshdhs::/++yMMMMhyhhhhhhhhhhyyhhNMM
+          MMMMMMMMMmoo+/::--...............-/syddmmmdo-`.............:-....-:--:+:://o+dMMMMhshyhdhyhmhdMMMMMM
+          MMMMMMMMMo++//:---............:shmmdyso++ooo:.................:+ydm/.---::/++oNMMMMmmmmMMMMMMMMMMMMM
+          MMMMMMMMd+o+/::----........-odmhs+-...................../hdmmmmmdy/-----::/+o:NMMMMMMMMMMMMMMMMMMMMM
+          MMMMMMMMy/+//:::----....../dho:-.:++/::::/+oshy-......../yhhhhyo:-.----::://+/NMMMMMMMMMMMMMMMMMMMMM
+          MMMMMMMMh++//:::-----.....::-...:dmmmmddmmmddds-.........------...-----:o+//+/NMMMMMMMMMMMMMMMMMMMMM
+          MMMMMMMMh++//::::-----..........-/osyhhhhhys+:-.................------::yN+/+/NMMMMMMMMMMMMMMMMMMMMM
+          MMMMMMMMh++///:::-------...........--::::--....................----:+osydh+/+/hddNMMMMMMMMMMMMMMMMMM
+          MMMMMMMMy/o///:::::---------...............................--:/+shddhyo+////+////+omMMMMMMMMMMMMMMMM
+          MMMMMMMMd+o+//::::::-----------..........................:shdmmdys+/:::////:::::////symNMMMMMMMMMMMM
+          MMMMMMMMMo++///:::::::::::::--------.........--:/+o+-....:yyo+/:::::///:::::-----::///++hdNMMMMMMMMM
+          MMMMMMMMMm+o+//:::::::::::::::::--oh----:/osyhddmmdy:--:++/:::::::////////:::///::-:::/+//osmMMMMMMM
+          MMMMMMMMMM++++//::::::://////:::::omhyyhhhyso++/:-------:+oyhs/://///:::::-----:://:::::////:omNMMMM
+          MMMMMMMMMMMo++///::::://///////::::://:------------------:+yho/+++//:::::::-------::/:::::://://shMM
+          MMMMMMMMMMMNo++/////////////////:::::------------------:+yyo//+++++////++/::::---.----::::---:::::+h
+          MMMMMMMMMMMMN+o+////////////////:::::------------------:osyhso+++++++++o++hd+::---.....----------:/-
+          MMMMMMMMMMMMMM++++/////////////:::::----------------------::smy+////++o+sMMMMd+::--........-.-----:/
+          MMMMMMMMMMMMMMNho++//////////:::::::-------------------::+sys+///::::/+/sMMMMMN/::-............---:/
+          MMMMMMMMMMMMMMMMMo+++//////:::::::::-----------------:::++/:://///::-:://odMMMMMo---............--::
+          MMMMMMMMMMMMMMMMMNho+++/////::::::::::::---::::-::::::::::::///+++/:---:///+dNMNm/--............--:-
+          MMMMMMMMMMMMMMMMMMMNNh++++/////::::::::::::::::::::::::://///+++sh/::----:////y/+/--............--::
+          MMMMMMMMMMMMMMMMMMMMMMmds+++++//////:::::::::::::::://///+++ooohNMmo:::----:://///-............--::d
+          MMMMMMMMMMMMMMMMMMMMMMMMMmdo+o+++++/////////////////+++++o+smmMMMMMMo:::------:::--............--::m
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMNNmdsosooo+++++++++++++o++soydNNMMMMMMMMMMm+::--------............----/:d
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNmmhsyyyyyyyyyssmmdMMMMMMMMMMMMMMMMMms/::---..............----::sN
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh::::---.........-----://+mM
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNy::::------------::///omMM
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNo///:::::::::///oodMMMMM
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMdos/:////::sohMMMMMMMM'
