@@ -1,5 +1,17 @@
 let lastSavedEntry: string | null = null;
 let lastSavedURL: string | null = null;
+let csrfToken: string | null | undefined = null;
+
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  (details) => {
+    if (!csrfToken) {
+      const csrfTokenHeader = details.requestHeaders!.find(x => x.name === 'X-CSRF-TOKEN')
+      csrfToken = csrfTokenHeader?.value
+    }
+  },
+  { urls: ["*://*.bamboohr.com/timesheet/clock/entries"] },
+  ["requestHeaders"]
+);
 
 chrome.webRequest.onBeforeRequest.addListener(
   (details) => {
@@ -36,7 +48,7 @@ chrome.runtime.onMessage.addListener(function (request, _, responder) {
         responder({ type: "NOT_READY" });
         return;
       }
-      responder({ type: "OK", data: lastSavedEntry, url: lastSavedURL });
+      responder({ type: "OK", data: lastSavedEntry, url: lastSavedURL, csrfToken: csrfToken });
       break;
   }
 });
