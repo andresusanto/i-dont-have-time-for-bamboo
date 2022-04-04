@@ -1,13 +1,5 @@
 import axios from "axios";
 
-function readCSRF() {
-  const j = document.createElement("script"),
-    f = document.getElementsByTagName("script")[0];
-  j.textContent = "document.body.setAttribute('data-csrf', CSRF_TOKEN)";
-  f.parentNode && f.parentNode.insertBefore(j, f);
-  f.parentNode && f.parentNode.removeChild(j);
-}
-
 function processDate(date: string, btn: HTMLButtonElement) {
   chrome.runtime.sendMessage({ type: "PROCESS_REQUEST" }, async (payload) => {
     if (payload.type === "NOT_READY") {
@@ -24,7 +16,7 @@ function processDate(date: string, btn: HTMLButtonElement) {
       try {
         const res = await axios.post(url, data, {
           headers: {
-            "x-csrf-token": document.body.getAttribute("data-csrf"),
+            "x-csrf-token": payload.csrfToken,
           },
         });
         console.log(res);
@@ -42,7 +34,6 @@ function processDate(date: string, btn: HTMLButtonElement) {
 }
 
 window.addEventListener("load", function () {
-  readCSRF();
   const data = document.getElementById("js-timesheet-data");
   if (!data) {
     alert("helo");
