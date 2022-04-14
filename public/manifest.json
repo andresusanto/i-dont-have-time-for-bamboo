@@ -21,7 +21,7 @@
     "service_worker": "js/background.js"
   },
 
-  "permissions": ["storage", "webRequest"],
+  "permissions": ["webRequest"],
 
   "host_permissions": [
     "https://*.bamboohr.com/*"
