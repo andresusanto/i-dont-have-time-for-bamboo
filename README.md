@@ -1,3 +1,6 @@
+# Chrome Webstore link
+https://chrome.google.com/webstore/detail/i-dont-have-time-for-bamb/ocfjhmgjhfoalcikmangkoleljladdal
+
 # Chrome Extension TypeScript Starter
 
 ![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
