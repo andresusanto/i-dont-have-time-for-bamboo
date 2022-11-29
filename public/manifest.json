@@ -3,7 +3,7 @@
 
   "name": "I don't have time for Bamboo",
   "description": "Extensions to help filling Bamboo Timesheet",
-  "version": "1.1.0",
+  "version": "1.2.0",
 
   "action": {
     "default_icon": "icon.png",

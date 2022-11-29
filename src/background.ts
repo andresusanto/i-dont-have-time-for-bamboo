@@ -5,11 +5,20 @@ let csrfToken: string | null | undefined = null;
 chrome.webRequest.onBeforeSendHeaders.addListener(
   (details) => {
     if (!csrfToken) {
-      const csrfTokenHeader = details.requestHeaders!.find(x => x.name === 'X-CSRF-TOKEN')
-      csrfToken = csrfTokenHeader?.value
+      if (!details.requestHeaders) {
+        console.error("failed getting csrf token, did not receive any headers on the entries request");
+        return;
+      }
+
+      const csrfTokenHeader = details.requestHeaders.find(x => x.name === 'X-CSRF-TOKEN')
+      if (!csrfTokenHeader) {
+        console.error("failed getting csrf token, header X-CSRF-TOKEN not found");
+        return;
+      }
+      csrfToken = csrfTokenHeader.value
     }
   },
-  { urls: ["*://*.bamboohr.com/timesheet/clock/entries"] },
+  { urls: ["*://*.bamboohr.com/timesheet/clock/entries", "*://*.bamboohr.com/timesheet/hour/entries"] },
   ["requestHeaders"]
 );
 
@@ -34,7 +43,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 
     chrome.runtime.sendMessage({ type: "DATA_READY", data: raw });
   },
-  { urls: ["*://*.bamboohr.com/timesheet/clock/entries"] },
+  { urls: ["*://*.bamboohr.com/timesheet/clock/entries", "*://*.bamboohr.com/timesheet/hour/entries"] },
   ["requestBody"]
 );
 

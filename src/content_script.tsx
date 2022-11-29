@@ -1,25 +1,40 @@
 import axios from "axios";
 
 function processDate(date: string, btn: HTMLButtonElement) {
+  console.log("IDHT - processDate with date", date)
   chrome.runtime.sendMessage({ type: "PROCESS_REQUEST" }, async (payload) => {
     if (payload.type === "NOT_READY") {
       btn.innerHTML = `AUTOFILL ${date}`;
       btn.disabled = false;
       alert("please fill in one entry manually to be used as template.");
+      console.warn("IDHT - processDate(), background sent NOT_READY")
       return;
     } else {
       const data = JSON.parse(payload.data);
       const url = payload.url;
-      for (let i = 0; i < data.entries.length; i++) {
-        data.entries[i].date = date;
+
+      // the entries data we're after can be keyed differently in different bamboo editions/versions
+      let entriesKey: "entries" | "hours"
+      if (data.entries) {
+        entriesKey = "entries"
+      } else if (data.hours) {
+        entriesKey = "hours"
+      } else {
+        console.error("IDHT - could not find the entries data in the api payload", data);
+        return
       }
+
+      console.log("IDHT - processDate(), background sent OK", data)
+      for (let i = 0; i < data[entriesKey].length; i++) {
+        data[entriesKey][i].date = date;
+      }
+      let res;
       try {
-        const res = await axios.post(url, data, {
+        res = await axios.post(url, data, {
           headers: {
             "x-csrf-token": payload.csrfToken,
           },
         });
-        console.log(res);
         btn.innerHTML =
           "Success!! You can fill other entries and refresh this page later.";
       } catch (e) {
@@ -28,6 +43,7 @@ function processDate(date: string, btn: HTMLButtonElement) {
             ? `\n\n${JSON.stringify(e.response.data)}`
             : "";
         btn.innerHTML = `ERROR! ${e.message}${body}`;
+        console.error("IDHT - failed sending time entry to api.", {err: e, response: res})
       }
     }
   });
@@ -36,7 +52,7 @@ function processDate(date: string, btn: HTMLButtonElement) {
 window.addEventListener("load", function () {
   const data = document.getElementById("js-timesheet-data");
   if (!data) {
-    alert("helo");
+    console.error("IDHT - failed to find timesheet data element of id js-timesheet-data")
     return;
   }
   const payload = JSON.parse(data.textContent as string);
